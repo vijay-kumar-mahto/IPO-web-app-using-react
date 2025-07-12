@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPO Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-chart-line"></i> IPO Dashboard</h1>
+                <div class="header-stats">
+                    <div class="stat-card">
+                        <span class="stat-number" id="totalIpos">0</span>
+                        <span class="stat-label">Total IPOs</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="openIpos">0</span>
+                        <span class="stat-label">Open IPOs</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="upcomingIpos">0</span>
+                        <span class="stat-label">Upcoming</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="all">All IPOs</button>
+            <button class="tab-btn" data-tab="upcoming">Upcoming</button>
+            <button class="tab-btn" data-tab="open">Open</button>
+            <button class="tab-btn" data-tab="listed">Listed</button>
+            <button class="tab-btn" data-tab="closed">Closed</button>
+        </nav>
+
+        <!-- Search and Filter Section -->
+        <div class="controls">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search companies...">
+            </div>
+            <div class="filter-container">
+                <select id="sortSelect">
+                    <option value="company_name">Sort by Company</option>
+                    <option value="open_date">Sort by Open Date</option>
+                    <option value="listing_gain">Sort by Listing Gain</option>
+                    <option value="current_return">Sort by Current Return</option>
+                </select>
+            </div>
+            <button class="refresh-btn" id="refreshBtn">
+                <i class="fas fa-sync-alt"></i> Refresh
+            </button>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Loading IPO data...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-message" id="errorMessage" style="display: none;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="errorText"></span>
+            <button onclick="hideError()">×</button>
+        </div>
+
+        <!-- IPO Grid -->
+        <div class="ipo-grid" id="ipoGrid">
+            <!-- IPO cards will be dynamically inserted here -->
+        </div>
+
+        <!-- No Results Message -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>No IPOs Found</h3>
+            <p>Try adjusting your search criteria or check back later for new IPOs.</p>
+        </div>
+    </div>
+
+    <!-- IPO Detail Modal -->
+    <div class="modal" id="ipoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">IPO Details</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- IPO details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
