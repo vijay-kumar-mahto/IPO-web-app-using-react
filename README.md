@@ -159,6 +159,7 @@ http://127.0.0.1:8000/api/
 ### Entity Relationship Overview
 
 ```mermaid
+erDiagram
     Companies {
         int company_id PK
         varchar company_name
@@ -238,3 +239,4 @@ http://127.0.0.1:8000/api/
     <a href="#top">Back to Top ⬆️</a>
   </p>
 </div>
+
